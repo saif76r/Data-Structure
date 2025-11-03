@@ -1,0 +1,45 @@
+#include<stdio.h>
+
+struct node {
+
+int data;
+struct node *next;
+
+};
+
+int main (){
+
+struct node n1,n2,n3;
+
+printf("Enter data for node1 :");
+scanf("%d",&n1.data);
+
+
+printf("Enter data for node2 :");
+scanf("%d",&n2.data);
+
+
+printf("Enter data for node3 :");
+scanf("%d",&n3.data);
+
+//link nodes
+n1.next=&n2;
+n2.next=&n3;
+n3.next=NULL;
+
+//print
+
+struct node *ptr=&n1;
+printf("/nLinklisted");
+while(ptr  !=NULL){
+
+    printf("%d ->,",ptr ->data);
+      ptr = ptr->next;
+}
+
+
+ printf("NULL\n");
+
+    return 0;
+
+}
