@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int data;
+    struct node *next;
+};
+
+int main() {
+    struct node *head = NULL, *newnode, *temp;
+    int n, i;
+
+    printf("Enter number of nodes: ");
+    scanf("%d", &n);
+
+    for(i = 1; i <= n; i++) {
+        newnode = (struct node *)malloc(sizeof(struct node));
+        if(newnode == NULL) {
+            printf("Memory allocation failed\n");
+            exit(1);
+        }
+
+        printf("Enter data for node %d: ", i);
+        scanf("%d", &newnode->data);
+        newnode->next = NULL;  // New node will be the last node
+
+        if(head == NULL) {
+            // If list is empty, new node becomes head
+            head = newnode;
+        } else {
+            // Traverse to the end of the list
+            temp = head;
+            while(temp->next != NULL) {
+                temp = temp->next;
+            }
+            temp->next = newnode; // Attach new node at the end
+        }
+    }
+
+    printf("\nLinked list after insertion at the end: ");
+    temp = head;
+    while(temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+
+    return 0;
+}
